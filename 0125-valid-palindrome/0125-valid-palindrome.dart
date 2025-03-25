@@ -1,7 +1,7 @@
 class Solution {
   bool isPalindrome(String s) {
   
-    // 공복, 특수문자 제거
+    // 공복, 특수문자 제거 후, 소문자로 변경
     String result = s.replaceAll(RegExp('[^a-zA-Z0-9]'), "").toLowerCase();
 
     int first = 0;
