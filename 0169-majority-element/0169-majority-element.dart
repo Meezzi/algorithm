@@ -11,16 +11,15 @@ class Solution {
     for(int num in nums) {
         if(num != prevNum) {
             prevNum = num;
-
-            
             count = 1;
         } else {
             count++;
         }
+        
         if(prevCount < count) {
-                prevCount = count;
-                result = num;
-            }
+            prevCount = count;
+            result = num;
+        }
     }
 
     return result;
