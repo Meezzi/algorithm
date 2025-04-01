@@ -13,8 +13,6 @@ class Solution {
     var current = head;
 
     // 리스트 뒤집기
-    // 반복문을 통해 current 노드의 next를 prev로 변경하여 역방향으로 만듭니다.
-    // prev와 current를 다음 노드로 이동하면서 연결을 재설정합니다.
     while(current != null) {
         ListNode? temp = current.next;
         current.next = prev;
