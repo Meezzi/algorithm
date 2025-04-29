@@ -1,26 +1,31 @@
 class Solution {
-  // Dart 코드
   bool uniqueOccurrences(List<int> arr) {
-    // 각 숫자의 등장 횟수를 저장할 Map 생성
-    Map<int, int> countMap = {};
+    // 요소와 그 요소의 등장 횟수를 저장할 빈 이중 리스트 생성
+    List<List<int>> list = [[], []];
 
-    // 배열을 순회하면서 숫자별 등장 횟수 세기
-    for (int num in arr) {
-        countMap.update(num, (count) => count + 1, ifAbsent: () => 1);
+    // 배열의 각 요소를 순회
+    for (int a in arr) {
+      if (list[0].contains(a)) {
+        // 이미 list[0]에 요소가 있다면
+        // 그 인덱스를 찾아서 list[1] (등장 횟수) 를 1 증가
+        int index = list[0].indexOf(a);
+        list[1][index]++;
+      } else {
+        // 요소가 없다면 새로 추가하고 등장 횟수는 1로 설정
+        list[0].add(a);
+        list[1].add(1);
+      }
     }
 
-    // 등장 횟수만 따로 모은 Set 생성 (Set은 중복을 허용하지 않음)
-    Set<int> occurrenceSet = {};
+    // 등장 횟수 리스트를 Set으로 변환 (중복 제거)
+    Set<int> listSet = Set<int>.from(list[1]);
 
-    for (int count in countMap.values) {
-        // 이미 등장한 횟수가 존재하면 false 반환
-        if (occurrenceSet.contains(count)) {
-            return false;
-        }
-        occurrenceSet.add(count);
+    // 등장 횟수 리스트와 Set의 길이를 비교하여
+    // 모두 유일하면 true, 아니면 false 반환
+    if (list[1].length == listSet.length) {
+      return true;
+    } else {
+      return false;
     }
-
-    // 모든 등장 횟수가 유일하면 true 반환
-    return true;
   }
 }
