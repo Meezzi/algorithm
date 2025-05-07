@@ -1,11 +1,21 @@
 class Solution {
   List<List<int>> findDifference(List<int> nums1, List<int> nums2) {
-    Set<int> set1 = nums1.toSet();
-    Set<int> set2 = nums2.toSet();
+    Set<int> set1 = Set<int>.from(nums1);
+    Set<int> set2 = Set<int>.from(nums2);
 
-    List<int> onlyIn1 = set1.where((x) => !set2.contains(x)).toList();
-    List<int> onlyIn2 = set2.where((x) => !set1.contains(x)).toList();
+    List<List<int>> answer = [[], []];
 
-    return [onlyIn1, onlyIn2];
+    for (int s in set1) {
+      if (!set2.contains(s)) {
+        answer[0].add(s);
+      }
+    }
+    for (int s in set2) {
+      if (!set1.contains(s)) {
+        answer[1].add(s);
+      }
+    }
+
+    return answer;
   }
 }
