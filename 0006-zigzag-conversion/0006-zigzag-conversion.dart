@@ -17,6 +17,6 @@ class Solution {
         currentRow += goingDown ? 1 : -1;
     }
 
-    return row.join('');
+    return rows.join('');
   }
 }
