@@ -15,10 +15,7 @@ class Solution {
                 jumps++; // 점프 수 증가
                 currentEnd = farthest; // 다음 점프에서의 끝 인덱스를 갱신
                 
-                // 이미 마지막 인덱스에 도달할 수 있는 경우
-                if (currentEnd >= nums.length - 1) {
-                    break;
-                }
+                
             }
         }
         
