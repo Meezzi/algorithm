@@ -3,23 +3,24 @@ import java.util.*;
 
 class Main {
     public static void main(String[] args) throws IOException {
-        Scanner sc = new Scanner(System.in);
-
-        int n = sc.nextInt();
-        int[] arrScore = new int[n];
-        int max = 0;
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        
+        int[] score = new int[N];
         double sum = 0;
-
-        for(int i=0; i<n; i++) {
-            arrScore[i] = sc.nextInt();
-            max = Math.max(max, arrScore[i]);
+        int max = 0;
+        
+        for(int i = 0; i < N; i++) {
+            score[i] = Integer.parseInt(st.nextToken());
+            if(max < score[i]) max = score[i];
         }
-
-        for(int i=0; i<n; i++) {
-            sum += arrScore[i];
+        
+        for(int i = 0; i < N; i++) {
+            sum += (double)score[i] / max * 100;
         }
-
-        System.out.println(sum * 100.0 / max / n);
-
+        System.out.println(sum / N);
+        
     }
 }
