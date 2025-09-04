@@ -2,27 +2,30 @@ import java.io.*;
 import java.util.*;
 
 class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String args[]) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        int n = Integer.parseInt(br.readLine());
-        int m = Integer.parseInt(br.readLine());
-        int[] arr = new int[n];
-        int cnt=0, sum=0;
-        int start=0, end=n-1;
-
+        
+        int N = Integer.parseInt(br.readLine());
+        int M = Integer.parseInt(br.readLine());
+        int arr[] = new int[N + 1];
+        
         StringTokenizer st = new StringTokenizer(br.readLine());
-        for(int i=0; i<n; i++) {
+        for(int i = 1; i <= N; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
         }
+        
         Arrays.sort(arr);
-
-        while(start<end) {
-            if(arr[start] + arr[end]==m) {
+        
+        int start = 1;
+        int end = N;
+        int cnt = 0;
+        while(start < end) {
+            if(arr[start] + arr[end] == M) {
                 cnt++;
                 start++;
                 end--;
-            } else if(arr[start] + arr[end]>m) {
+            }
+            else if (arr[start] + arr[end] > M) {
                 end--;
             } else {
                 start++;
